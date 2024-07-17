@@ -5,7 +5,7 @@ namespace Microsoft.SemanticKernel.Plugins.OpenApi;
 /// <summary>
 /// The REST API operation parameter location.
 /// </summary>
-public enum RestApiOperationParameterLocation
+internal enum RestApiOperationParameterLocation
 {
     /// <summary>
     /// Query parameter.

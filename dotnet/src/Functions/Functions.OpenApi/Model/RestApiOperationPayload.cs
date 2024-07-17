@@ -7,7 +7,7 @@ namespace Microsoft.SemanticKernel.Plugins.OpenApi;
 /// <summary>
 /// The REST API operation payload.
 /// </summary>
-public class RestApiOperationPayload
+internal class RestApiOperationPayload
 {
     /// <summary>
     /// The payload MediaType.

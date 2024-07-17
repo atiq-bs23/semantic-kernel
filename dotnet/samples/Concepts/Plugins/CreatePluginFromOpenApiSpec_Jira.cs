@@ -95,7 +95,7 @@ public class CreatePluginFromOpenApiSpec_Jira(ITestOutputHelper output) : BaseTe
 
         // AddComment Function
         arguments["issueKey"] = "TEST-2";
-        arguments[RestApiOperation.PayloadArgumentName] = """{"body": "Here is a rad comment"}""";
+        arguments["payload"] = """{"body": "Here is a rad comment"}""";
 
         // Run operation via the semantic kernel
         result = await kernel.InvokeAsync(jiraFunctions["AddComment"], arguments);

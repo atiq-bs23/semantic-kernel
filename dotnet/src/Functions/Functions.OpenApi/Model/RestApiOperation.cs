@@ -12,7 +12,7 @@ namespace Microsoft.SemanticKernel.Plugins.OpenApi;
 /// <summary>
 /// The REST API operation.
 /// </summary>
-public sealed class RestApiOperation
+internal sealed class RestApiOperation
 {
     /// <summary>
     /// A static empty dictionary to default to when none is provided.

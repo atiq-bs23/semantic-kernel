@@ -5,7 +5,7 @@ namespace Microsoft.SemanticKernel.Plugins.OpenApi;
 /// <summary>
 /// The REST API operation parameter.
 /// </summary>
-public sealed class RestApiOperationParameter
+internal sealed class RestApiOperationParameter
 {
     /// <summary>
     /// The parameter name.

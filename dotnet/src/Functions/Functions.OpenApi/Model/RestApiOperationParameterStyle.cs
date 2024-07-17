@@ -5,7 +5,7 @@ namespace Microsoft.SemanticKernel.Plugins.OpenApi;
 /// <summary>
 /// The REST API operation parameter style.
 /// </summary>
-public enum RestApiOperationParameterStyle
+internal enum RestApiOperationParameterStyle
 {
     /// <summary>
     /// Path-style parameters.

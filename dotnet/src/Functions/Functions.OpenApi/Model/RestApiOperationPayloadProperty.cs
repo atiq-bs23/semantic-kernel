@@ -7,7 +7,7 @@ namespace Microsoft.SemanticKernel.Plugins.OpenApi;
 /// <summary>
 /// The REST API operation payload property.
 /// </summary>
-public sealed class RestApiOperationPayloadProperty
+internal sealed class RestApiOperationPayloadProperty
 {
     /// <summary>
     /// The property name.
