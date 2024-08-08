@@ -2,7 +2,10 @@
 
 using System;
 using System.Text.Json;
+using System.Xml.Schema;
+using System.Xml;
 using Json.Schema;
+using System.IO;
 
 namespace Microsoft.SemanticKernel.Plugins.OpenApi;
 
@@ -57,10 +60,39 @@ public static class RestApiOperationResponseExtensions
         }
     }
 
-    private static bool ValidateXml(RestApiOperationResponse _)
+    private static bool ValidateXml(RestApiOperationResponse response)
     {
-        // todo -- implement
-        return true;
+        var xmlSchema = XmlReader.Create(new StringReader(JsonSerializer.Serialize(response.ExpectedSchema)));
+        try
+        {
+            var schema = new XmlSchemaSet();
+            schema.Add("", xmlSchema);
+
+            var settings = new XmlReaderSettings
+            {
+                ValidationType = ValidationType.Schema,
+                Schemas = schema
+            };
+            settings.ValidationEventHandler += (sender, args) =>
+            {
+                throw new XmlSchemaValidationException(args.Message);
+            };
+
+            using var reader = XmlReader.Create(new StringReader(response.Content?.ToString() ?? string.Empty), settings);
+            while (reader.Read())
+            {
+            }
+            xmlSchema.Dispose();
+            return true;
+        }
+        catch (XmlSchemaValidationException)
+        {
+            return false;
+        }
+        catch (XmlException)
+        {
+            return false;
+        }
     }
 
     private static bool ValidateTextHtml(RestApiOperationResponse response)
